@@ -1,0 +1,38 @@
+plugins {
+    // 核心插件
+    id 'java'
+    // 依赖管理插件
+    id 'io.spring.dependency-management' version '1.0.14.RELEASE'
+    // sprinb-boot插件以及版本号
+    id 'org.springframework.boot' version '2.7.4'
+}
+
+group = 'com.fys'
+version = '0.0.1-SNAPSHOT'
+//sourceCompatibility = '11'
+
+// 自定义版本
+//ext['slf4j.version'] = '1.7.20'
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+}
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+repositories {
+    mavenLocal()
+    maven{url 'https://maven.aliyun.com/repository/public/'}
+    mavenCentral()
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
