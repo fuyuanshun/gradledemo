@@ -1,3 +1,7 @@
+import org.gradle.api.Action
+import org.gradle.api.Task
+import org.gradle.api.tasks.TaskAction
+
 plugins {
     // 核心插件
     id 'java'
@@ -5,7 +9,10 @@ plugins {
     id 'io.spring.dependency-management' version '1.0.14.RELEASE'
     // sprinb-boot插件以及版本号
     id 'org.springframework.boot' version '2.7.4'
+//    id 'application'
 }
+
+//mainClassName='com.fys.gradledemo.controller.Te'
 
 group = 'com.fys'
 version = '0.0.1-SNAPSHOT'
@@ -36,3 +43,19 @@ repositories {
 tasks.named('test') {
     useJUnitPlatform()
 }
+
+task task2 {
+    dependsOn = ['task1']
+
+    doFirst{
+        println "this is task2"
+    }
+}
+
+task task1 {
+    doLast{
+        println "this is task1"
+    }
+}
+
+
