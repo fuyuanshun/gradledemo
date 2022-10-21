@@ -1,7 +1,3 @@
-import org.gradle.api.Action
-import org.gradle.api.Task
-import org.gradle.api.tasks.TaskAction
-
 plugins {
     // 核心插件
     id 'java'
@@ -44,18 +40,10 @@ tasks.named('test') {
     useJUnitPlatform()
 }
 
-task task2 {
-    dependsOn = ['task1']
 
-    doFirst{
-        println "this is task2"
-    }
-}
+File file = file("D:/a.txt")
+println file
 
-task task1 {
-    doLast{
-        println "this is task1"
-    }
-}
+
 
 
